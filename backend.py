@@ -12,7 +12,7 @@ query = raw_input("Enter your query\n")
 q_features = model.infer_vector(query.split())
 
 shloka = ''
-min_dist = 100000000 
+dist_array = {}
 with open('result.csv','r') as file:
 	fd = csv.reader(file)
 
@@ -22,9 +22,12 @@ with open('result.csv','r') as file:
 			temp.append( float(item[i]) )
 
 		dist = np.linalg.norm(q_features - temp)
-		if(min_dist > dist):
-			min_dist = dist
-			shloka = item[-1]
+		dist_array[item[-1]] = dist
 
-print("The Famous Quote from Geeta says that")
-print(shloka)
+final = sorted(dist_array, key=dist_array.__getitem__)
+
+num_shlokas = 5
+print("The Famous Quotes from Geeta says that")
+print("\n")
+for i in range(num_shlokas):
+	print(final[i])
