@@ -124,7 +124,7 @@ def success():
          for search in data_verse:
             if search['meaning'].encode('UTF8') == final_out[i]:
                metadata_arr.append(search['chapter_number'])
-               metadata_arr.append(search['verse_number']+"_"+search['chapter_number'])
+               metadata_arr.append(str(search['verse_number'])+"_"+str(search['chapter_number']) )
 
 
       for i in range(num_shlokas):
