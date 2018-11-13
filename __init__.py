@@ -118,8 +118,21 @@ def success():
       response_json = {}
       response_json['success'] = 1
 
+      metadata_arr = []
+
       for i in range(num_shlokas):
-         response_json['shloka'+str(i)] = final_out[i]
+         for search in data_verse:
+            if search['meaning'].encode('UTF8') == final_out[i]:
+               metadata_arr.append(search['chapter_number'])
+               metadata_arr.append(search['verse_number'])
+
+
+      for i in range(num_shlokas):
+         obj = {}
+         obj['text'] = final_out[i]
+         obj['chapter'] = metadata_arr[2*i]
+         obj['verse_id'] = metadata_arr[2*i+1]
+         response_json['shloka'+str(i)] = obj
 
       return jsonify(response_json)
 
