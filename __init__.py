@@ -4,6 +4,8 @@ import csv
 import numpy as np
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from gensim.test.utils import get_tmpfile
+
+
 app = Flask(__name__)
 
 
@@ -49,6 +51,10 @@ def success():
       return jsonify(response_json)
    
 
+@app.route("/")
+def hello():
+    return "Hello, Welcome"
 
-if __name__ == '__main__':
-   app.run(debug = True)
+if __name__ == "__main__":
+    app.run()
+
