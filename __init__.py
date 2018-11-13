@@ -9,9 +9,10 @@ import json
 from phrase_extract import main
 from thesaurus import Word
 
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/api')
 def success():
