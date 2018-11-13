@@ -4,7 +4,8 @@ import csv
 import numpy as np
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from gensim.test.utils import get_tmpfile
-
+import os
+cwd = os.getcwd()
 
 app = Flask(__name__)
 
@@ -14,7 +15,7 @@ def success():
    if(request.args.get('query')):
       query = request.args.get('query')
 
-      fname = get_tmpfile("my_doc2vec_model")
+      fname = cwd+'/model_save'
       num_features = 5
 
       model = Doc2Vec.load(fname)
@@ -23,7 +24,7 @@ def success():
 
       shloka = ''
       dist_array = {}
-      with open('result.csv','r') as file:
+      with open(cwd+'/result.csv','r') as file:
          fd = csv.reader(file)
 
          for item in fd:
