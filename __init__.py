@@ -135,7 +135,9 @@ def success():
          obj['verse_id'] = metadata_arr[2*i+1]
          response_json['shloka'+str(i)] = obj
 
-      return jsonify(response_json)
+      response = jsonify(response_json)
+      response.headers.add('Access-Control-Allow-Origin', '*')
+      return response
 
    else:
       response_json = {}
