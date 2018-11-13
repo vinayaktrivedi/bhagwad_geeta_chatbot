@@ -1,6 +1,7 @@
 
 from flask import Flask, redirect, url_for, request, make_response,render_template, jsonify
 import csv
+import numpy as np
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from gensim.test.utils import get_tmpfile
 app = Flask(__name__)
