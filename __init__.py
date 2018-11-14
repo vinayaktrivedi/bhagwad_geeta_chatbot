@@ -42,7 +42,8 @@ def success():
       final = sorted(dist_array, key=dist_array.__getitem__)
       phrase = main(query)
       arr = []
-      arr.append(Word(str(phrase[0][0])).synonyms())
+      if(len(phrase) > 0):
+         arr.append(Word(str(phrase[0][0])).synonyms())
 
       if(len(phrase) > 1):
          arr.append(Word(str(phrase[1][0])).synonyms())
